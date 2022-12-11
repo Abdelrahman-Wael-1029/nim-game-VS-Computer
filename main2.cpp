@@ -1,7 +1,7 @@
 #include <iostream>
 #include "nim game.hpp"
-
 int main() {
+
     int i = 1;
     int choice;
     while (true) {
@@ -85,7 +85,7 @@ int main() {
                         cin >> ind >> move;
                         --ind;
                     }
-                    cout << players[0]->get_name() << " take " << move << " form " << "pile " << ind << endl;
+                    cout << players[0]->get_name() << " take " << move << " form " << "pile " << ind + 1 << endl;
                     game[ind] -= move;
                     i = 2;
                     continue;
@@ -99,7 +99,7 @@ int main() {
                 if (i == 2) {
                     players[1]->getmove(ind, move);
                     game[ind] -= move;
-                    cout << players[1]->get_name() << ": " << ind + 1 << " " << move << endl;
+                    cout << "computer player"<< " take " << move << " from pile " << ind + 1 << endl;
                     i = 1;
                 }
                 if (game.is_lose(game.total_number())) {

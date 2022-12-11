@@ -1,7 +1,8 @@
 #include "nim game.hpp"
 
 Variant_two::Variant_two() {
-    piles[0] = piles[1] = 8;
+    piles[0] = 7;
+    piles[1] = 8;
     piles[2] = 9;
 }
 

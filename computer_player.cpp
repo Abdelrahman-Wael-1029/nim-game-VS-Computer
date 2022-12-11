@@ -50,7 +50,7 @@ computer_player_Variant_two::computer_player_Variant_two(Variant_two &game) : ga
 }
 
 void computer_player_Variant_two::getmove(int &index, int &num) {
-    memset(dp, -1, sizeof dp);
+    memset(dp, 0, sizeof dp);
     int best_score = -1000;
     for (int i = 0; i < 3; ++i) {
         for (int j = 1; j <= (min({3, game_computer[i], game_computer.total_number() - 1})); ++j) {
@@ -75,7 +75,7 @@ int computer_player_Variant_two::minimax(Variant_two game, bool mx) {
             return 1;
     }
     int &ret = dp[game[0]][game[1]][game[2]][mx];
-    if (~ret)
+    if (ret)
         return ret;
     if (mx) {
         int best_score = -1000;
