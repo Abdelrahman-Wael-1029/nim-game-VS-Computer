@@ -22,7 +22,7 @@ class Variant_two {
 public:
     int total_number();
 
-    bool is_lose(int number);
+    bool is_lose();
 
     int &operator[](int);
 
@@ -70,9 +70,11 @@ public:
 
     int minimax(Variant_one game, bool mx, int number);
 };
-class computer_player_Variant_two:public player_Variant_two{
+
+class computer_player_Variant_two : public player_Variant_two {
     Variant_two &game_computer;
     int dp[10][10][10][2];
+
 
 public:
     explicit computer_player_Variant_two(Variant_two &game);

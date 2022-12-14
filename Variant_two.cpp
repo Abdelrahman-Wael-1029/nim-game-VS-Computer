@@ -6,8 +6,8 @@ Variant_two::Variant_two() {
     piles[2] = 9;
 }
 
-bool Variant_two::is_lose(int number) {
-    return number == 1;
+bool Variant_two::is_lose() {
+    return total_number()==1;
 }
 
 int Variant_two::total_number() {

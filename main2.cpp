@@ -90,7 +90,7 @@ int main() {
                     i = 2;
                     continue;
                 }
-                if (game.is_lose(game.total_number())) {
+                if (game.is_lose()) {
                     cout << players[0]->get_name() << " is winner\n";
                     delete players[1];
                     delete players[0];
@@ -102,7 +102,7 @@ int main() {
                     cout << "computer player"<< " take " << move << " from pile " << ind + 1 << endl;
                     i = 1;
                 }
-                if (game.is_lose(game.total_number())) {
+                if (game.is_lose()) {
                     cout << "computer player is winner\n";
 
                     delete players[1];

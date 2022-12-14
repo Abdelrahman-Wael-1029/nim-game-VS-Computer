@@ -45,12 +45,11 @@ int computer_player_Variant_one::minimax(Variant_one game, bool mx, int number) 
 
 computer_player_Variant_two::computer_player_Variant_two(Variant_two &game) : game_computer(game) {
     name = "computer player";
-
+    memset(dp,0,sizeof dp);
 
 }
 
 void computer_player_Variant_two::getmove(int &index, int &num) {
-    memset(dp, 0, sizeof dp);
     int best_score = -1000;
     for (int i = 0; i < 3; ++i) {
         for (int j = 1; j <= (min({3, game_computer[i], game_computer.total_number() - 1})); ++j) {
@@ -68,7 +67,7 @@ void computer_player_Variant_two::getmove(int &index, int &num) {
 }
 
 int computer_player_Variant_two::minimax(Variant_two game, bool mx) {
-    if (game.is_lose(game.total_number())) {
+    if (game.is_lose()) {
         if (mx)
             return -1;
         else
@@ -80,9 +79,9 @@ int computer_player_Variant_two::minimax(Variant_two game, bool mx) {
     if (mx) {
         int best_score = -1000;
         for (int i = 0; i < 3; ++i) {
-            for (int j = 1; j <= (min({3, game_computer[i], game_computer.total_number() - 1})); ++j) {
+            for (int j = 1; j <= (min({3, game[i], game.total_number() - 1})); ++j) {
                 game[i] -= j;
-                int score = minimax(game, 0);
+                int score = minimax(game, false);
                 game[i] += j;
                 best_score = max(best_score, score);
             }
@@ -91,9 +90,9 @@ int computer_player_Variant_two::minimax(Variant_two game, bool mx) {
     } else {
         int best_score = 1000;
         for (int i = 0; i < 3; ++i) {
-            for (int j = 1; j <= (min({3, game_computer[i], game_computer.total_number() - 1})); ++j) {
+            for (int j = 1; j <= (min({3, game[i], game.total_number() - 1})); ++j) {
                 game[i] -= j;
-                int score = minimax(game, 1);
+                int score = minimax(game, true);
                 game[i] += j;
                 best_score = min(best_score, score);
             }
